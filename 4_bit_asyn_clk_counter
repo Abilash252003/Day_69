@@ -1,0 +1,58 @@
+
+///100 Days of RTL///
+
+///Abilash P///
+
+///4 BIT - Up counter with Asynchronous///
+
+module up_counter_asyn (input CLK, input RST, output reg [3:0] Up_Counter);
+
+  always @(posedge CLK) 
+    begin
+    if (RST) 
+      begin
+        Up_Counter <= 4'b0000;
+      end
+    else 
+      begin
+        Up_Counter[0] <= ~Up_Counter[0];
+      end
+  end
+
+  always @(posedge ~Up_Counter[0]) 
+    begin
+    if (RST)
+      begin
+        Up_Counter <= 4'b0000;
+      end
+    else 
+      begin
+        Up_Counter[1] <= ~Up_Counter[1];
+      end
+  end
+
+  always @(posedge ~Up_Counter[1]) 
+    begin
+    if (RST) 
+      begin
+        Up_Counter <= 4'b0000;
+    end
+    else 
+      begin
+        Up_Counter[2] <= ~Up_Counter[2];
+      end
+  end
+
+  always @(posedge ~Up_Counter[2]) 
+    begin
+    if (RST) 
+      begin
+        Up_Counter <= 4'b0000;
+    end
+    else 
+      begin
+        Up_Counter[3] <= ~Up_Counter[3];
+      end
+  end
+
+endmodule
